@@ -99,6 +99,7 @@ body {
   line-height: 20px;
   letter-spacing: 0%;
   text-align: left;
+  text-decoration: none;
 }
 
 .site-header .menu-btn {
