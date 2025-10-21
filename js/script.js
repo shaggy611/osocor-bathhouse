@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         sideMenu.classList.remove('active');
         menuBackdrop.classList.remove('active');
         document.body.classList.remove('menu-open');
+        document.querySelectorAll('.popup-overlay').forEach(popup => popup.classList.remove('active'));
         callbackForm.classList.add('active');
         document.body.style.overflow = 'hidden';
         menuBackdrop.classList.add('active');
@@ -68,10 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
           });
 
           alert('✅ Відправлено!');
-          // callbackForm.reset();
+          document.querySelector('.menu-backdrop').classList.remove('active');
+          document.querySelectorAll('.callback-form-content input').forEach(input => input.value = '');
         } catch (error) {
           console.log('Error:', error);
           alert('❌ Помилка відправлення. Спробуйте ще раз.');
+          document.querySelector('.menu-backdrop').classList.remove('active');
         }
 
 
@@ -122,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Закриття по кліку на фон попапу
+
   document.querySelectorAll('.popup-overlay').forEach(overlay => {
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) {
